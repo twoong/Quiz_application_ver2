@@ -15,7 +15,8 @@
     $finalScore = $_POST['finalscore'];
     $voca = round($finalScore * 75 + rand(1, 500));
 
-    echo "<div id='results1'>귀하는 8000개 표제어 중 " . $voca . "개를 아는 것으로 추정됩니다. </div></br>";
+    echo "<div id='results1'>최종 점수는 " . "<strong>".$finalScore."점</strong>" . " 입니다. </div></br>";
+    echo "<div id='results1'>귀하는 8000개 표제어 중 " . "<strong>".$voca . "개</strong>"."를 아는 것으로 추정됩니다. </div></br>";
 
     if ($voca <= 4000) {
         echo "<div id='results2'>BIGVOCA CORE에서 ".(4000-$voca)."개만 외우시면 원어민 단어 사용빈도의 70% 수준까지 알게됩니다. 

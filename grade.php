@@ -93,7 +93,8 @@
     echo "<h2> 여러분은 11억 개의 단어의 분석을 통해 만들어지고 700만 권의 책을 통해 검증된 빅데이터 기반 우선순위 단어장 BIGVOCA를 통해 시험을 보셨습니다. BIGVOCA의 표제어 8000개를 습득하면 원어민 어휘사용빈도의 90%을 알게됩니다. </h2>";
     ?>
 
-    <img src="graph.jpg" width="500" height="292">
+    <img src="cover.jpg" width="500" height="380">
+    <img src="graph_new.jpg" width="500" height="380">
 
     <form action='score.php' method='post'>
         <div id='button'>
