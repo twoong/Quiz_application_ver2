@@ -36,41 +36,41 @@
         exit;
     }
 
-    for ($num_question = 0; $num_question < $num_total_question; $num_question++) {
+    for ($level_idx = 0; $level_idx < $num_total_level; $level_idx++) {
         if(1) {
             $sql[$level_idx] = "SELECT * FROM elevel_" . ($level_idx + 1);
         }else {
             $sql[$level_idx] = "SELECT * FROM level_" . ($level_idx + 1);
         }
-        $result[$num_question] = mysql_query($sql[$num_question]);
+        $result[$level_idx] = mysql_query($sql[$level_idx]);
 
-        if (!$result[$num_question]) {
+        if (!$result[$level_idx]) {
             echo "Could not successfully run query ($sql) from DB: " . mysql_error();
             exit;
         }
 
-        if (mysql_num_rows($result[$num_question]) == 0) {
+        if (mysql_num_rows($result[$level_idx]) == 0) {
             echo "No rows found, nothing to print so am exiting";
             exit;
         }
 
-        echo "<div id='results'> Level " . ($num_question + 1) . "</div>";
+        echo "<div id='results'> Level " . ($level_idx + 1) . "</div>";
 
         for ($num_subquestion = 0; $num_subquestion < $num_sub_sample; $num_subquestion++) {
-            $row[$num_question][$num_subquestion] = mysql_fetch_assoc($result[$num_question]);
-            $question[$num_question][$num_subquestion] = $row[$num_question][$num_subquestion]['question'];
-            $total_cnt[$num_question][$num_subquestion] = $row[$num_question][$num_subquestion]['total'];
-            $correct_cnt[$num_question][$num_subquestion] = $row[$num_question][$num_subquestion]['correct'];
+            $row[$level_idx][$num_subquestion] = mysql_fetch_assoc($result[$level_idx]);
+            $question[$level_idx][$num_subquestion] = $row[$level_idx][$num_subquestion]['question'];
+            $total_cnt[$level_idx][$num_subquestion] = $row[$level_idx][$num_subquestion]['total'];
+            $correct_cnt[$level_idx][$num_subquestion] = $row[$level_idx][$num_subquestion]['correct'];
 
 
-            echo "<div id='results2'>" . $question[$num_question][$num_subquestion]
-                . " 정답률 " . $correct_cnt[$num_question][$num_subquestion] . "/" . $total_cnt[$num_question][$num_subquestion]
-                . " (" . round($correct_cnt[$num_question][$num_subquestion] / $total_cnt[$num_question][$num_subquestion] * 100) . "%)</div>";
+            echo "<div id='results2'>" . $question[$level_idx][$num_subquestion]
+                . " 정답률 " . $correct_cnt[$level_idx][$num_subquestion] . "/" . $total_cnt[$level_idx][$num_subquestion]
+                . " (" . round($correct_cnt[$level_idx][$num_subquestion] / $total_cnt[$level_idx][$num_subquestion] * 100) . "%)</div>";
 
         }
 
-        echo "<div id='results2'>" . round(100 * ($correct_cnt[$num_question][0] + $correct_cnt[$num_question][1] + $correct_cnt[$num_question][2])
-                / ($total_cnt[$num_question][0] + $total_cnt[$num_question][1] + $total_cnt[$num_question][2])) . "%</div>";
+        echo "<div id='results2'>" . round(100 * ($correct_cnt[$level_idx][0] + $correct_cnt[$level_idx][1] + $correct_cnt[$level_idx][2])
+                / ($total_cnt[$level_idx][0] + $total_cnt[$level_idx][1] + $total_cnt[$level_idx][2])) . "%</div>";
 
         echo "</br>";
     }
