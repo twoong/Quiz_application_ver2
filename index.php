@@ -6,7 +6,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta property="og:title" content="영어 레벨 테스트"/>
-    <meta property="og:image" content="http://inspo82.cafe24.com/english_level/speak.jpg"/>
+    <meta property="og:image" content="http://inspo82.cafe24.com/english_level/firstscreen.png"/>
     <meta property="og:description" content="이 사이트는 자신의 영어 레벨을 확인할 수 있는 문제가 있습니다. 열심히 풀어주시길 바랍니다."/>
     <meta property="og:url" content="http://inspo82.cafe24.com/english_level/"/>
 
@@ -35,7 +35,7 @@
         </br>
     </form>
 
-    <img src="speak2.jpg" width="500" height="280">
+    <img src="firstscreen.png" width="500" height="375">
 
 </div>
 
