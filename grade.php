@@ -96,7 +96,7 @@
     <img src="graph_new.jpg" width="500" height="380">
 
     <form action='score.php' method='post'>
-        <div id='button'>
+        <div id='button2'>
             <input type='submit' value='점수 확인'/>
         </div>
 

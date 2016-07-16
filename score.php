@@ -38,7 +38,10 @@ TIME이나 CNN에 독해 시 단어 때문에 독해가 불가능한 경우는 �
     }
     ?>
 </br>
+    <a href="http://www.yes24.com/24/goods/29317972?CategoryNumber=001001004004004&Pcode=011">
     <img src="cover.jpg" width="500" height="380">
+        <div id="link"> BIGVOCA로 단어정복 시작!</div>
+    </a>
 
 </div>
 

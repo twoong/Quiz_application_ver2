@@ -59,9 +59,9 @@ if (!mysql_select_db("inspo82")) {
 
 for ($level_idx = 0; $level_idx < $num_total_level; $level_idx++) {
 
-    if(1) {
+    if (1) {
         $sql[$level_idx] = "SELECT * FROM elevel_" . ($level_idx + 1);
-    }else {
+    } else {
         $sql[$level_idx] = "SELECT * FROM level_" . ($level_idx + 1);
     }
 
@@ -119,72 +119,75 @@ if (is_null($_POST['answers'])) {
 ?>
 <div id='page-wrap'>
 
-<h1>빅 데이터로 확인하는 내 진짜 영어실력!</h1>
+    <h1>빅 데이터로 확인하는 내 진짜 영어실력!</h1>
 
-<?php
-if ($cur_qnumber == $num_total_question) {
-    echo "<form action='grade.php' method='post' id='quiz'>";
-} else {
-    echo "<form action='quiz.php' method='post' id='quiz'>";
-}
-?>
-
-
-<div class="tw-padding-jumbo tw-light-grey">
-    <h2>
-        <?php
-        echo "Q" . ($cur_sub_question + $cur_level + 1) . ". " . $question[$cur_level][$rand_question[$cur_level][$cur_sub_question] - 1] . "<br>";
-        ?>
-    </h2>
     <?php
-    for ($choice_idx = 0; $choice_idx < $num_choice; $choice_idx++) {
-        echo "<div id='choice'>";
-        echo "<input type=radio name=question-" . ($cur_sub_question + $cur_level + 1) . "-answers id=question-" . ($cur_sub_question + $cur_level + 1) . "-answers-" . ($choice_idx + 1) . " value=" . ($choice_idx + 1) . " />";
-        echo "<label for=question-" . ($cur_sub_question + $cur_level + 1) . "-answers-" . ($choice_idx + 1) . ">";
-        echo $exercise[$cur_level][$rand_question[$cur_level][$cur_sub_question] - 1][$choice_idx] . "<br>";
-    echo "</label>";
-    echo "</div>";
-}
+    if ($cur_qnumber == $num_total_question) {
+        echo "<form action='grade.php' method='post' id='quiz'>";
+    } else {
+        echo "<form action='quiz.php' method='post' id='quiz'>";
+    }
     ?>
 
-    <div id='button'>
-        <input type='submit' value='NEXT'/>
-    </div>
-</div>
-</br>
 
-
-<?php
-echo "<input type='hidden' name='order" . ($cur_level + 1) . "_" . ($cur_sub_question + 1) . "' value=" . $rand_question[$cur_level][$cur_sub_question] . ">";
-
-for ($level_idx = 0; $level_idx < $num_total_level; $level_idx++) {
-    for ($sub_question_idx = 0; $sub_question_idx < $num_sub_question; $sub_question_idx++) {
-        echo "<input type='hidden' name='rand_order[$level_idx][$sub_question_idx]' value=" . $rand_question[$level_idx][$sub_question_idx] . ">";
-    }
-}
-
-echo "<input type='hidden' name='qnumber' value=" . $cur_qnumber . ">";
-echo "<input type='hidden' name='answers' value=" . $total_answers . ">";
-echo "<input type='hidden' name='cur_sub_question' value=" . $cur_sub_question . ">";
-echo "<input type='hidden' name='cur_level' value=" . $cur_level . ">";
-?>
-
-
-</form>
-
-<script type="text/javascript">
-    var t = document.getElementById('quiz');
-    t.addEventListener('submit', function (event) {
-        if (!((document.getElementById('<?php echo "question-" . ($cur_sub_question + $cur_level + 1) . "-answers-1" ?>').checked)
-            || (document.getElementById('<?php echo "question-" . ($cur_sub_question + $cur_level + 1) . "-answers-2" ?>').checked)
-            || (document.getElementById('<?php echo "question-" . ($cur_sub_question + $cur_level + 1) . "-answers-3" ?>').checked)
-            || (document.getElementById('<?php echo "question-" . ($cur_sub_question + $cur_level + 1) . "-answers-4" ?>').checked)
-            || (document.getElementById('<?php echo "question-" . ($cur_sub_question + $cur_level + 1) . "-answers-5" ?>').checked))) {
-            alert('문제를 풀어야 합니다.');
-            event.preventDefault();
+    <div class="tw-padding-jumbo tw-light-grey">
+        <h2>
+            <?php
+            echo "Q" . ($cur_sub_question + $cur_level + 1) . ". " . $question[$cur_level][$rand_question[$cur_level][$cur_sub_question] - 1] . "<br>";
+            ?>
+        </h2>
+        <?php
+        for ($choice_idx = 0; $choice_idx < $num_choice; $choice_idx++) {
+            echo "<div id='choice'>";
+            echo "<input type=radio name=question-" . ($cur_sub_question + $cur_level + 1) . "-answers id=question-" . ($cur_sub_question + $cur_level + 1) . "-answers-" . ($choice_idx + 1) . " value=" . ($choice_idx + 1) . " />";
+            echo "<label for=question-" . ($cur_sub_question + $cur_level + 1) . "-answers-" . ($choice_idx + 1) . ">";
+            echo $exercise[$cur_level][$rand_question[$cur_level][$cur_sub_question] - 1][$choice_idx] . "<br>";
+            echo "</label>";
+            echo "</div>";
         }
-    });
-</script>
+        ?>
+
+        <div id='button'>
+            <input type='submit' value='NEXT'/>
+        </div>
+    </div>
+
+    <?php
+    echo "<div id='status'>" . ($cur_level + 1) . " / " . $num_total_level . "</div>";
+//    echo "<div id='status'>"." Total " . $num_total_level ." questions"."</div>";
+    ?>
+
+    <?php
+    echo "<input type='hidden' name='order" . ($cur_level + 1) . "_" . ($cur_sub_question + 1) . "' value=" . $rand_question[$cur_level][$cur_sub_question] . ">";
+
+    for ($level_idx = 0; $level_idx < $num_total_level; $level_idx++) {
+        for ($sub_question_idx = 0; $sub_question_idx < $num_sub_question; $sub_question_idx++) {
+            echo "<input type='hidden' name='rand_order[$level_idx][$sub_question_idx]' value=" . $rand_question[$level_idx][$sub_question_idx] . ">";
+        }
+    }
+
+    echo "<input type='hidden' name='qnumber' value=" . $cur_qnumber . ">";
+    echo "<input type='hidden' name='answers' value=" . $total_answers . ">";
+    echo "<input type='hidden' name='cur_sub_question' value=" . $cur_sub_question . ">";
+    echo "<input type='hidden' name='cur_level' value=" . $cur_level . ">";
+    ?>
+
+
+    </form>
+
+    <script type="text/javascript">
+        var t = document.getElementById('quiz');
+        t.addEventListener('submit', function (event) {
+            if (!((document.getElementById('<?php echo "question-" . ($cur_sub_question + $cur_level + 1) . "-answers-1" ?>').checked)
+                || (document.getElementById('<?php echo "question-" . ($cur_sub_question + $cur_level + 1) . "-answers-2" ?>').checked)
+                || (document.getElementById('<?php echo "question-" . ($cur_sub_question + $cur_level + 1) . "-answers-3" ?>').checked)
+                || (document.getElementById('<?php echo "question-" . ($cur_sub_question + $cur_level + 1) . "-answers-4" ?>').checked)
+                || (document.getElementById('<?php echo "question-" . ($cur_sub_question + $cur_level + 1) . "-answers-5" ?>').checked))) {
+                alert('문제를 풀어주세요.');
+                event.preventDefault();
+            }
+        });
+    </script>
 
 </div>
 
