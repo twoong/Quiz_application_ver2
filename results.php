@@ -74,7 +74,7 @@
 
         echo "</br>";
     }
-    echo "<div id='results2'> 총 참석자수 " . ($total_cnt[0][0] + $total_cnt[0][1] + $total_cnt[0][2]) . "</div>";
+    echo "<div id='results2'> 총 참석자수 " . ($total_cnt[0][0] + $total_cnt[0][1] + $total_cnt[0][2] + $total_cnt[0][3] + $total_cnt[0][4]) . "</div>";
 
     ?>
 

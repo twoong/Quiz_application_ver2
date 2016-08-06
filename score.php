@@ -2,22 +2,35 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
+<?php
+$finalScore = $_POST['finalscore'];
+$voca = round($finalScore * 75 + rand(1, 500));
+
+$pgDesc="최종 점수는 ".$finalScore."점입니다. 귀하는 8000개 표제어 중 ".$voca."개를 아는 것으로 추정됩니다.";
+?>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <meta property="og:title" content="영어 레벨 테스트 결과"/>
+    <meta property="og:image" content="http://inspo82.cafe24.com/english_level/cover_2.jpg"/>
+    <meta property="og:type" content="website"/>
+<!--    <meta name="description" content="--><?php //echo $pgDesc ?><!--">-->
+
+    <!--    <meta name="description" content="-->
+    <? // echo "최종 점수는 ".$finalScore."점 입니다. 귀하는 8000개 표제어 중".$voca."개를 아는 것으로 추정됩니다."; ?><!-- "/>-->
+
     <title>영어 실력 테스트</title>
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
     <meta name="viewport" content="width=device-width, initial-scale=0.7">
+
 </head>
 <body>
 <div id="page-wrap">
     <h1>나의 영어 레벨 테스트 결과</h1>
     <?php
-    $finalScore = $_POST['finalscore'];
-    $voca = round($finalScore * 75 + rand(1, 500));
 
-    echo "<div id='results1'>최종 점수는 " . "<strong>" . $finalScore . "점</strong>" . " 입니다. </div></br>";
-    echo "<div id='results1'>귀하는 8000개 표제어 중 " . "<strong>" . $voca . "개</strong>" . "를 아는 것으로 추정됩니다. </div></br>";
-
+    echo "<div id='results1'> <p> 최종 점수는 " . "<strong>" . $finalScore . "점</strong>" . " 입니다. 
+            </br> 귀하는 8000개 표제어 중 " . "<strong>" . $voca . "개</strong>" . "를 아는 것으로 추정됩니다. </p></div></br>";
     if ($voca <= 4000) {
         echo "<div id='results2'><strong>BIGVOCA CORE</strong>에서 " . (4000 - $voca) . "개만 외우시면 원어민 단어 사용빈도의 70% 수준까지 알게됩니다. 
 그렇게 외운 단어만 적절하게 구사해도 의사소통에 전혀 지장이 없게 됩니다. 
@@ -37,11 +50,17 @@ TIME이나 CNN에 독해 시 단어 때문에 독해가 불가능한 경우는 �
         }
     }
     ?>
-</br>
+    </br>
     <a href="http://www.yes24.com/24/goods/29317972?CategoryNumber=001001004004004&Pcode=011">
-    <img src="cover.jpg" width="500" height="380">
+        <img src="cover.jpg" width="500" height="380">
         <div id="link"> BIGVOCA로 단어정복 시작!</div>
     </a>
+
+    <form action='index.php' method='post' id='quiz'>
+        <div id='button'>
+            <input type='submit' value='문제 다시 풀기'/>
+        </div>
+    </form>
 
 </div>
 

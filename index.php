@@ -49,6 +49,17 @@
     pageTracker._trackPageview();
 </script>
 
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- big_voca_ad -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-7191971935937292"
+     data-ad-slot="3530068566"
+     data-ad-format="auto"></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 </body>
 
 </html>
